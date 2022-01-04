@@ -1,4 +1,12 @@
 import React, {useEffect, useState} from 'react'
+import styled from 'styled-components'
+
+const MyPageContainer = styled.div`
+background-color:black;
+color:white;
+text-align:center;
+
+`
 
 export default function MyPage() {
 
@@ -19,10 +27,10 @@ export default function MyPage() {
     return (
         <div>
             {myInfo &&
-            <>
-            <h2> {myInfo.firstName} {myInfo.lastName}</h2>
+            <MyPageContainer>
+            <h3> {myInfo.firstName} {myInfo.lastName}</h3>
             <p> {myInfo.email}</p>
-            </>
+            </MyPageContainer>
             }
             
         </div>

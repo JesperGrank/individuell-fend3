@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '../styles/Button'
 
 export default function Detail(props) {
     const [detail, setDetail] = useState([])
@@ -19,7 +20,7 @@ export default function Detail(props) {
             // console.log(data)
         }) 
 
-    }, [])
+    }, [props.id])
 
     function handleOnDelete(id){
         console.log(id)
@@ -38,17 +39,15 @@ export default function Detail(props) {
     }
 
     const [name, setName] = useState("")
-    const [organisationNr, setOrgnumber] = useState("")
-    const [vatNr , setVatnr] = useState("")
-    const [reference , setRef] = useState("")
-    const [paymentTerm, setPaymentTerm] = useState("")
-    const [website, setWebsite] = useState("")
-    const [email, setKundemail] = useState("")
-    const [phoneNumber, setPhonenumber] = useState("")
+    // const [organisationNr, setOrgnumber] = useState("")
+    // const [vatNr , setVatnr] = useState("")
+    // const [reference , setRef] = useState("")
+    // const [paymentTerm, setPaymentTerm] = useState("")
+    // const [website, setWebsite] = useState("")
+    // const [email, setKundemail] = useState("")
+    // const [phoneNumber, setPhonenumber] = useState("")
 
     function handleOnSubmit(id){
-
-       
 
         const token = localStorage.getItem("smallbus")
         const url = `https://frebi.willandskill.eu/api/v1/customers/${id}/`
@@ -76,7 +75,7 @@ export default function Detail(props) {
             <>
                 <form onSubmit={handleOnSubmit}>
                 Nytt namn: <input value={name} onChange={e => setName(e.target.value)}></input>
-                {/* Nytt namn: <input value={organisationNr} onChange={e => setName(e.target.value)}></input>
+                {/* Nytt organisationsnr: <input value={organisationNr} onChange={e => setOrgnumber(e.target.value)}></input>
                 Nytt namn: <input value={vatNr} onChange={e => setName(e.target.value)}></input>
                 Nytt namn: <input value={reference} onChange={e => setName(e.target.value)}></input>
                 Nytt namn: <input value={paymentTerm} onChange={e => setName(e.target.value)}></input>
@@ -85,10 +84,8 @@ export default function Detail(props) {
                 Nytt namn: <input value={phoneNumber} onChange={e => setName(e.target.value)}></input> */}
 
                 </form>
-                
-
                 <h3>{detail.name}</h3>
-                <h3>{detail.organisationNr}</h3>
+                <h3> Org: {detail.organisationNr}</h3>
                 <h3>{detail.vatNr}</h3>
                 <h3>{detail.reference}</h3>
                 <h3>{detail.paymentTerm}</h3>
@@ -96,11 +93,9 @@ export default function Detail(props) {
                 <h3>{detail.email}</h3>
                 <h3>{detail.phoneNumber}</h3>
 
-                <button onClick={e => handleOnDelete(detail.id)}>Delete</button>
-                <button onClick={e => handleOnSubmit(detail.id)}>Uppdatera</button>
-            </>}
-
-            
+                <Button onClick={e => handleOnDelete(detail.id)}>Ta bort</Button>
+                <Button bgcolor onClick={e => handleOnSubmit(detail.id)}>Uppdatera</Button>
+            </>}     
         </div>
     )
 }

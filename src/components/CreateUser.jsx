@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import { Button } from '../styles/Button'
+import { Input } from '../styles/Input'
 
 export default function CreateUser(props) {
 
@@ -12,12 +14,12 @@ export default function CreateUser(props) {
     const [phoneNumber, setPhonenumber] = useState("")
 
     function renderInput(type, placeholder, value, onChange){
-        return <input
+        return <Input
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={e => onChange(e.target.value)}
-        ></input>
+        ></Input>
     }
 
     function handleOnCreateUser(e){
@@ -38,9 +40,8 @@ export default function CreateUser(props) {
     }
     return (
         <div>
-            <h2>Create USER</h2>
+            <h2>Skapa användare</h2>
 
-            
             <form onSubmit={handleOnCreateUser}>
                 {renderInput("text", "Namn på kunden", name, setName)}
                 {renderInput("number", "Orginationsnummer", organisationNr, setOrgnumber)}
@@ -51,7 +52,7 @@ export default function CreateUser(props) {
                 {renderInput("text", "Mail", email, setKundemail)}
                 {renderInput("text", "Telefon", phoneNumber, setPhonenumber)}
 
-                <button className="btn btn-primary" type="submit" >Skapa användare</button>
+                <Button width="50%" bgcolor type="submit" >Skapa användare</Button>
             </form>
         </div>
     )

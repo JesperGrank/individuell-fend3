@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '../styles/Button'
+import { Input } from '../styles/Input'
+import { LoginContainer } from '../styles/LoginContainer'
 
 export default function LoginPage() {
 
@@ -22,21 +25,21 @@ export default function LoginPage() {
         .then(res => res.json())
         .then(data => {
           const token = data.token
-          localStorage.setItem("smallbus", token)
-          navigate("/home")
-    
+          localStorage.setItem("smallbus", token)          
+            navigate("/home")
         })
       }
 
     return (
-        <div>
-            <h1>Startpage / Logga in </h1>
-            <form onSubmit={handleOnLogin}>
-            <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}></input>
-            <input type="password" placeholder="Lösenord" value={password} onChange={e => setPassword(e.target.value)}></input>
+        <LoginContainer>
+          
+        <form onSubmit={handleOnLogin}>        
+          <Input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}></Input>
+          <Input type="password" placeholder="Lösenord" value={password} onChange={e => setPassword(e.target.value)}></Input>
+          <Button width="100%" bgcolor type="submit">Logga in</Button>
+        </form>
+        
+        </LoginContainer>
 
-            <button type="submit">Logga in</button>
-            </form>
-        </div>
     )
 }

@@ -1,12 +1,11 @@
-import React, {createContext, useContext, useEffect} from "react";
+import React from "react";
 import { Route, Routes} from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage"
 import CustomerDetailPage from "./pages/CustomerDetailPage";
 
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-const customerContext = createContext( {} )
 
 function App() {
 
@@ -23,5 +22,5 @@ function App() {
     </div>
   );
 }
-export {customerContext}
+
 export default App;
